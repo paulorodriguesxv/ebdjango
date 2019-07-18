@@ -1,0 +1,88 @@
+{% extends 'container_tracking/base.html' %}
+
+{% block conteudo %}
+
+<div class="content container">
+    <div class="row text-center">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <p class="text-justify">
+                Nós iremos rastrear os dados do container de acordo com o armador.
+                Para realizar a pesquisa, digite o código do container abaixo.
+            </p>
+            <br>
+            <p>Entre com o código do container:</p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            {% for message in messages %}
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form action="{% url 'search' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Número do container. Ex: ABCD1234567"
+                        aria-label="Número do conatiner" aria-describedby="button-addon2"
+                        id="{{ form.container_number.id_for_label }}" name="{{ form.container_number.name }}"
+                        value="{{ form.container_number.value |default_if_none:'' }}">
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2" data-toggle="modal"
+                            data-target="#watingModalCenter">Search</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% block resultados %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="watingModalCenter" tabindex="-1" role="dialog" aria-labelledby="watingModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Contactando o armador... Isto poderá levar algum tempo :-)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-grow text-primary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

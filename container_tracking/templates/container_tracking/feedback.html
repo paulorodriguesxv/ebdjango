@@ -1,0 +1,61 @@
+<div class="modal fade" id="feedbackForm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Nosso trabalho está em progresso</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'feedback' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <p>Deixe-me saber em quais recursos você está interessado</p>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="featureSearchUI"
+                                            name="featureSearchUI" checked>
+                                        <label class="custom-control-label" for="featureSearchUI">
+                                            Procurar por container de outros armadores (Web page)
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="featureAPIBrazil"
+                                            name="featureAPIBrazil" checked>
+                                        <label class="custom-control-label" for="featureAPIBrazil">
+                                            Procurar por containers no Brasil
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="featureContainerHistory"
+                                            name="featureContainerHistory" checked>
+                                        <label class="custom-control-label" for="featureContainerHistory">
+                                            Obter o histórico completo do container
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address (Optional)</label>
+                                    <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+                                        placeholder="Enter email" name="userEmail">
+                                    <small id="emailHelp" class="form-text text-muted">Se você quiser saber mais sobre
+                                        este projeto, me deixe saber seu email.</small>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Estou interessado</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

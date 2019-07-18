@@ -1,0 +1,20 @@
+{% extends 'container_tracking/index.html' %}
+
+{% block resultados %}
+
+{% for container in containers %}
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ container.number }}</h5>
+            <small>Last query updated at {{ container.last_import }}</small>
+        </div>
+        <p class="mb-1">{{ container.status }} at {{ container.date }} </p>
+        <p class="mb-1">{{ container.location }}</p>
+
+        <small>{{container.carrier}}</small>
+    </a>
+</div>
+{% endfor %}
+
+{% endblock %}
