@@ -5,7 +5,7 @@ from datetime import datetime
 from .forms import SearchForm
 from .carriers import is_valid_carrier, request_container_info
 from .models import Container
-
+from .mail import send_feedback_email
 
 def _update_container_data(container_number, data):
     if not data:
@@ -90,8 +90,9 @@ def search(request):
 
 
 def feedback(request):
-    if request.method == 'POST':
-        feature_search_ui = request.POST.get('featureSearchUI')
-        feature_api = request.POST.get('featureAPIBrazil')
-        feature_container_history = request.POST.get('featureContainerHistory')
-        user_email = request.POST.get('userEmail')
+    send_feedback_email(request.POST)
+
+    messages.success(request, f"Seu feedback foi enviado. Obrigado!")
+
+    return HttpResponseRedirect("/")			      
+    
