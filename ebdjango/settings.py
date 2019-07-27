@@ -24,7 +24,7 @@ SECRET_KEY = 'ui)ep7(o^na2u1u7g!80f+a31i8*^lfqg(ieact&pd*ca_$lru'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "www.codekraft.com.br", "django-env.fpph7kyqbn.us-east-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 # Application definition
 
@@ -122,5 +122,5 @@ STATIC_ROOT = 'static'
 EMAIL_HOST = "email-smtp.us-west-2.amazonaws.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'AKIAUIRFJ6S6VK4S65C2'
-EMAIL_HOST_PASSWORD = 'BEa5wDLF7mSi9h/utkImVJ2mo/tuFbgg9I8FQCyfsow1'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
